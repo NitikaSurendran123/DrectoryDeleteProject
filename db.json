@@ -1,0 +1,52 @@
+{
+  "disks": [
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-1",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "20-Nov-22"
+    },
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-2",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "20-Nov-22"
+    },
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-3",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "20-Dec-22"
+    },
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-4",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "20-Dec-22"
+    },
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-5",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "19-Jan-23"
+    },
+    {
+      "project": "pp-devqa-ms-helium-test",
+      "disk_name": "cfm-test-direktiv-disk-6",
+      "disk_size": "10",
+      "response_required_by_date": "19-Oct-22",
+      "deletion_date": "21-Oct-22",
+      "snapshot_expiration_date": "19-Jan-23"
+    }
+  ]
+}
