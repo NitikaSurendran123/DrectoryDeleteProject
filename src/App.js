@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios, { Axios } from 'axios';
 import './App.css'
 import api from './api/projects';
@@ -6,75 +6,155 @@ import { MDBTable, MDBTableHead, MDBTableBody, MDBRow, MDBCol, MDBContainer } fr
 
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
-function App(){
-    const[data, setData] = useState([]);
 
-    useEffect(() => {
-        loadUserData();
-    }, []);
-    //fetch data
-    const loadUserData = async()=> {
-       return await api.get("/disks")
-       .then((response) => setData(response.data))
-       .catch((err) => console.log(err));
-    };
-    console.log("data", data)
 
-    const handleDelete = async (item)=> {
+function App() {
+  const action = useRef(null);
+   const [comments, setComments] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
+
+
+ 
+
+  //fetch data
+  const loadUserData = async () => {
+    console.log("loadUsr")
+    
+    return await axios.get("http://localhost:3000/disks")
+     // .then((response) => setData(response.data))
+      .then((res) => {
+        setData(res.data)
+       
+       
+    })
+      .catch((err) => console.log(err));
+  };
+  console.log("data", data)
+
+  useEffect(() => {
+    loadUserData();
+  }, []);
+  
+
+
+
+//   const handleDelete = async (disk_name) => {
+// console.log('disk_name',disk_name)
+//     await axios.delete(`http://localhost:3000/disks/${disk_name}`)
+    
+//     .then(() => {
+//       loadUserData()
+//       window.location.reload();
+//   })
+   
+  
+
+   
+//   };
+  // const handleException = async (id) => {
+  //   // console.log('id',id)
+  //   //     await axios.get("http://localhost:3000/disks")
+        
+  //   //     .then(() => {
+  //   //       loadUserData()
+  //   //       window.location.reload();
+  //   //   })
+  //   fetch('https://myapi.com', 
+  //   { method: 'POST',
+  //    headers: { accept: 'application/json', 
+  //    body: JSON.stringify({ message: 'Hello World!' }) 
+  //   } })
+      
+    
+       
+  //     };
+ 
+  const url = `http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait` ;
+  
+
+  // function postJourney(data) {
+
+    
+  //   return fetch(
+  //     url,
+  //     {
+  //       method:'GET',
      
-     await api.delete(`/disks/item`); 
-
-   
-
+  //     })
+  //     .then(response => response.json())
       
-    }
+         
+  // }
+ const  actionButton = () => {
+  
    
-    return (
-      <MDBContainer>
-      <div style = {{marginTop: "100px"}}>
-      <h2 className= "text-center"> Deleting Records Fetch </h2>
-      
-      <MDBRow>
-        <MDBCol size ="12">
-          <MDBTable>
-            <MDBTableHead dark>
-              <tr>
-              <th scope="col"> No. </th>
-                <th scope="col"> project</th>
-                <th scope="col"> disk_name</th>
-                <th scope="col"> disk_size</th>
-              </tr>
+    if(action =="DELETE" || "EXCEPTION")
+    fetch(url, {
+        method: 'POST',
+        headers: new Headers(),
+        body: JSON.stringify({ body: "DELETE" })
+    }).then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err))
+};
+ useEffect(() => {
+    setLoading(false);
+    loadUserData();
+  }, []);
 
-            </MDBTableHead>
-            {data.length === 0 ? (
-              <MDBTableBody className= "align-center mb-0">
+
+
+
+
+  return (
+    <MDBContainer>
+      <div style={{ marginTop: "100px" }}>
+        <h2 className="text-center"> Deleting Records Fetch </h2>
+
+        <MDBRow>
+          <MDBCol size="12">
+            <MDBTable>
+              <MDBTableHead dark>
                 <tr>
-                  <td colSpan = {8} className="text-center mb-0">No Data Found</td>
+                  <th scope="col"> ID </th>
+                  <th scope="col"> project</th>
+                  <th scope="col"> disk_name</th>
+                  <th scope="col"> disk_size</th>
                 </tr>
-              </MDBTableBody>
-            ):(
-              data.map((item, index)=> (
-                <MDBTableBody key={index}>
+
+              </MDBTableHead>
+              {data.length === 0 ? (
+                <MDBTableBody className="align-center mb-0">
                   <tr>
-                    <th scope = "row"> {index+1}</th>
-                    <td>{item.project}</td>
-                    <td>{item.disk_name}</td>
-                    <td>{item.disk_size}</td>
-                    <td style={{border: '1px solid black'}}> <button onClick={() => handleDelete(index)} className= "btn btn-danger btn-sm"> DELETE</button></td>
+                    <td colSpan={8} className="text-center mb-0">No Data Found</td>
+                  </tr>
+                </MDBTableBody>
+              ) : (
+                data.map((item, id) => (
+                  <MDBTableBody key={id}>
+                    <tr>
+                      <th scope="row"> {id + 1}</th>
+                      <td>{item.project}</td>
+                      <td>{item.disk_name}</td>
+                      <td>{item.disk_size}</td>
+                      <td style={{ border: '1px solid black' }}> <button onClick={() => {actionButton(data);}} className="btn btn-danger btn-sm"> DELETE</button></td>
+                      <td style={{ border: '1px solid black' }}> <button onClick={() => {actionButton(data);}} className="btn btn-success"> EXCEPTION</button></td>
                     </tr>
 
-                  
-                  
-                </MDBTableBody>
-              ))
-            )}
-          </MDBTable>
 
-        </MDBCol>
-      </MDBRow>
+
+                  </MDBTableBody>
+                ))
+              )}
+            </MDBTable>
+
+          </MDBCol>
+        </MDBRow>
       </div>
-     </MDBContainer> 
-    );
+    </MDBContainer>
+  );
 }
 
 export default App;
