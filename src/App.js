@@ -122,6 +122,8 @@ function App() {
                   <th scope="col"> project</th>
                   <th scope="col"> disk_name</th>
                   <th scope="col"> disk_size</th>
+                  <th scope="col"> Delete</th>
+                  <th scope="col"> Exception</th>
                 </tr>
 
               </MDBTableHead>
@@ -139,8 +141,8 @@ function App() {
                       <td>{item.project}</td>
                       <td>{item.disk_name}</td>
                       <td>{item.disk_size}</td>
-                      <td style={{ border: '1px solid black' }}> <button onClick={() => {actionButton(data);}} className="btn btn-danger btn-sm"> DELETE</button></td>
-                      <td style={{ border: '1px solid black' }}> <button onClick={() => {actionButton(data);}} className="btn btn-success"> EXCEPTION</button></td>
+                      <td> <button onClick={() => {actionButton(data);}} className="btn btn-danger btn-sm"> DELETE</button></td>
+                      <td> <button onClick={() => {actionButton(data);}} className="btn btn-success"> EXCEPTION</button></td>
                     </tr>
 
 
