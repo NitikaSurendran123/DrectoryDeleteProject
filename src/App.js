@@ -9,7 +9,7 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
 
 function App() {
-  const action = useRef(null);
+ 
    const [comments, setComments] = useState([]);
    const [loading, setLoading] = useState(true);
    const [error, setError] = useState(null);
@@ -40,19 +40,19 @@ function App() {
 
 
 
-//   const handleDelete = async (disk_name) => {
-// console.log('disk_name',disk_name)
-//     await axios.delete(`http://localhost:3000/disks/${disk_name}`)
+   const handleDelete = async (id) => {
+ 
+     await axios.delete(`http://localhost:3000/disks/${id}`)
     
-//     .then(() => {
-//       loadUserData()
-//       window.location.reload();
-//   })
+     .then(() => {
+  loadUserData()
+       window.location.reload();
+   })
    
   
 
    
-//   };
+ };
   // const handleException = async (id) => {
   //   // console.log('id',id)
   //   //     await axios.get("http://localhost:3000/disks")
@@ -70,8 +70,7 @@ function App() {
     
        
   //     };
- 
-  const url = `http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait` ;
+
   
 
   // function postJourney(data) {
@@ -87,24 +86,75 @@ function App() {
       
          
   // }
- const  actionButton = () => {
+ 
+
+
+  const UpdateUser = async (project, disk_name) => {
+    
+    var data = {
+      'project': project,
+      
+      'disk_name': disk_name,
+      'action': "exception",
+     
+    }
+    fetch('http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/form-data',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
   
-   
-    if(action =="DELETE" || "EXCEPTION")
-    fetch(url, {
-        method: 'POST',
-        headers: new Headers(),
-        body: JSON.stringify({ body: "DELETE" })
-    }).then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err))
-};
- useEffect(() => {
-    setLoading(false);
-    loadUserData();
-  }, []);
+    .then(res => res.json())
+    .then(
+      (result) => {
+       
+        
+        alert(result['message'])
+        if (result['status'] === 'ok') {
+          window.location.href = '/';
+        }
+      }
+    )
+  }
+  const updataDelete = async (project, disk_name) => {
+    
+    var data = {
+      'project': project,
+      
+      'disk_name': disk_name,
+      'action': "delete",
+     
+    }
+    fetch('http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/form-data',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+  
+    .then(res => res.json())
+    .then(
+      (result) => {
+       
+        
+        alert(result['message'])
+        if (result['status'] === 'ok') {
+          window.location.href = '/';
+        }
+      }
+    )
+  }
+  
+  
 
-
+  const [project, setFname] = useState('');
+  const [disk_name, setLname] = useState('');
+  const [action, setUsername] = useState('');
 
 
 
@@ -141,8 +191,8 @@ function App() {
                       <td>{item.project}</td>
                       <td>{item.disk_name}</td>
                       <td>{item.disk_size}</td>
-                      <td> <button onClick={() => {actionButton(data);}} className="btn btn-danger btn-sm"> DELETE</button></td>
-                      <td> <button onClick={() => {actionButton(data);}} className="btn btn-success"> EXCEPTION</button></td>
+                      <td> <button onClick={() => {updataDelete(item.project, item.disk_name);}} className="btn btn-danger btn-sm"> DELETE</button></td>
+                      <td> <button onClick={() => {UpdateUser(item.project, item.disk_name);}} className="btn btn-success"> EXCEPTION</button></td>
                     </tr>
 
 
