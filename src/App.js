@@ -9,6 +9,7 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
 
 function App() {
+  console.log(process.env.REACT_APP_NAME)
  
    const [comments, setComments] = useState([]);
    const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ function App() {
   const loadUserData = async () => {
     console.log("loadUsr")
     
-    return await axios.get("http://localhost:3000/disks")
+    return await axios.get(process.env.REACT_APP_API_URL)
      // .then((response) => setData(response.data))
       .then((res) => {
         setData(res.data)
@@ -40,19 +41,19 @@ function App() {
 
 
 
-   const handleDelete = async (id) => {
+//     const handleDelete = async (id) => {
  
-     await axios.delete(`http://localhost:3000/disks/${id}`)
+//       await axios.delete(`http://localhost:3000/disks/${id}`)
     
-     .then(() => {
-  loadUserData()
-       window.location.reload();
-   })
+//      .then(() => {
+//    loadUserData()
+//       window.location.reload();
+//    })
    
   
 
    
- };
+//  };
   // const handleException = async (id) => {
   //   // console.log('id',id)
   //   //     await axios.get("http://localhost:3000/disks")
@@ -98,7 +99,8 @@ function App() {
       'action': "exception",
      
     }
-    fetch('http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait', {
+    axios.post(process.env.REACT_APP_API_URL/action, {
+      
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
@@ -128,7 +130,7 @@ function App() {
       'action': "delete",
      
     }
-    fetch('http://192.168.2.158/api/namespaces/nitikaone/tree/nitikatwo?op=wait', {
+    fetch(process.env.REACT_APP_API_URL/action, {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
@@ -162,6 +164,8 @@ function App() {
     <MDBContainer>
       <div style={{ marginTop: "100px" }}>
         <h2 className="text-center"> Deleting Records Fetch </h2>
+        {/* <h3>{process.env.REACT_APP_NAME}</h3>
+        <h3>env: {process.env.REACT_APP_ENV}</h3> */}
 
         <MDBRow>
           <MDBCol size="12">
