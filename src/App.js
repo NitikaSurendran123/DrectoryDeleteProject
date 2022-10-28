@@ -99,7 +99,7 @@ function App() {
       'action': "exception",
      
     }
-    axios.post(process.env.REACT_APP_API_URL/action, {
+    axios.post(process.env.REACT_APP_API_URLONE/action, {
       
       method: 'POST',
       headers: {
@@ -130,7 +130,7 @@ function App() {
       'action': "delete",
      
     }
-    fetch(process.env.REACT_APP_API_URL/action, {
+    fetch(process.env.REACT_APP_API_URLONE/action, {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
