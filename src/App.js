@@ -9,7 +9,7 @@ import "mdb-react-ui-kit/dist/css/mdb.min.css";
 
 
 function App() {
-  console.log(process.env.REACT_APP_NAME)
+  console.log(process.env)
  
    const [comments, setComments] = useState([]);
    const [loading, setLoading] = useState(true);

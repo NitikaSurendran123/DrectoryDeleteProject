@@ -1,70 +1,70 @@
 {
-  "disks": [
-    {
-      "id": "1",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-1",
-      "disk_size": "100",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "20-Nov-22"
-    },
-    {
-      "id": "2",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-2",
-      "disk_size": "10",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "20-Nov-22"
-    },
-    {
-      "id": "3",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-3",
-      "disk_size": "10",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "20-Dec-22"
-    },
-    {
-      "id": "4",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-4",
-      "disk_size": "10",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "20-Dec-22"
-    },
-    {
-      "id": "5",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-5",
-      "disk_size": "10",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "19-Jan-23"
-    },
-    {
-      "id": "6",
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-6",
-      "disk_size": "10",
-      "response_required_by_date": "19-Oct-22",
-      "deletion_date": "21-Oct-22",
-      "snapshot_expiration_date": "19-Jan-23"
-    },
-    {
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-1",
-      "action": "delete",
-      "id": "T6hEUeI"
-    },
-    {
-      "project": "pp-devqa-ms-helium-test",
-      "disk_name": "cfm-test-direktiv-disk-3",
-      "action": "delete",
-      "id": "I5mi0WU"
-    }
-  ]
+  "return": {
+    "python": [
+      {
+        "result": {
+          "custom_note": "This is to bring to your attention that below disks are either unattached or under-utilized as identified from our recent disk optimization activity.",
+          "disks": [
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-1",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "26-Nov-2022"
+            },
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-4",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "26-Nov-2022"
+            },
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-3",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "25-Jan-2023"
+            },
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-6",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "25-Jan-2023"
+            },
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-2",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "26-Dec-2022"
+            },
+            {
+              "deletion_date": "27-Oct-2022",
+              "disk_name": "cfm-test-direktiv-disk-5",
+              "disk_size": "10",
+              "project": "pp-devqa-ms-helium-test",
+              "response_required_by_date": "25-Oct-2022",
+              "snapshot_expiration_date": "26-Dec-2022"
+            }
+          ],
+          "overriderecipients": [],
+          "project": "pp-devqa-ms-helium-test",
+          "reminder_email_count": "1",
+          "request_type": "notify_unattached_disks_owners",
+          "share_point_link": "https://paypal.sharepoint.com/sites/cfm/SitePages/Unattached-Disk-Deletion.aspx",
+          "support_contact": "cloud-optimization@paypal.com",
+          "survey_link": "cloud-optimization@paypal.com",
+          "testing": "false"
+        },
+        "success": true
+      }
+    ]
+  }
 }
